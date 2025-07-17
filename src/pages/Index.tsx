@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Gift, Heart, Users, Sparkles, Cake, Balloon } from "lucide-react";
+import { Gift, Heart, Users, Sparkles, Cake, Circle } from "lucide-react";
 
 const Index = () => {
   return (
@@ -38,9 +38,9 @@ const Index = () => {
       <section className="container mx-auto px-4 py-16 text-center">
         <div className="max-w-4xl mx-auto">
           <div className="flex justify-center space-x-4 mb-6">
-            <Balloon className="w-8 h-8 text-pink-400 animate-bounce" style={{animationDelay: '0s'}} />
+            <Circle className="w-8 h-8 text-pink-400 animate-bounce" style={{animationDelay: '0s'}} />
             <Cake className="w-10 h-10 text-purple-500 animate-bounce" style={{animationDelay: '0.2s'}} />
-            <Balloon className="w-8 h-8 text-blue-400 animate-bounce" style={{animationDelay: '0.4s'}} />
+            <Circle className="w-8 h-8 text-blue-400 animate-bounce" style={{animationDelay: '0.4s'}} />
           </div>
           
           <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 bg-clip-text text-transparent mb-6">
