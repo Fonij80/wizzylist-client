@@ -3,11 +3,16 @@ import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Gift, Heart, Calendar, Clock, Share2, MessageCircle, ArrowLeft } from "lucide-react";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Gift, Heart, Calendar, Clock, Share2, MessageCircle, ArrowLeft, User } from "lucide-react";
 import { WishListDisplay } from "@/components/WishListDisplay";
 import { BirthdayCountdown } from "@/components/BirthdayCountdown";
 import { BirthdayMessages } from "@/components/BirthdayMessages";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { MobileNav } from "@/components/MobileNav";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { SocialShare } from "@/components/SocialShare";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface ProfileData {
   name: string;
@@ -20,7 +25,7 @@ interface ProfileData {
 const UserProfile = () => {
   const { profileId } = useParams();
   const [profile, setProfile] = useState<ProfileData | null>(null);
-  const [showShareMessage, setShowShareMessage] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     // Load profile data from localStorage (in a real app, this would be from a database)
@@ -29,13 +34,6 @@ const UserProfile = () => {
       setProfile(JSON.parse(savedProfile));
     }
   }, [profileId]);
-
-  const handleShare = () => {
-    const url = window.location.href;
-    navigator.clipboard.writeText(url);
-    setShowShareMessage(true);
-    setTimeout(() => setShowShareMessage(false), 2000);
-  };
 
   if (!profile) {
     return (
@@ -70,29 +68,43 @@ const UserProfile = () => {
                 WizzyList
               </h1>
             </Link>
-            <div className="space-x-2">
-              <Button
-                onClick={handleShare}
-                variant="outline"
-                className="border-pink-200 text-pink-600 hover:bg-pink-50"
-              >
-                <Share2 className="w-4 h-4 mr-2" />
-                Share
-              </Button>
+            
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center space-x-2">
+              <Avatar className="w-8 h-8">
+                <AvatarImage src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7" alt="Profile" />
+                <AvatarFallback>
+                  <User className="w-4 h-4" />
+                </AvatarFallback>
+              </Avatar>
+              
+              <LanguageSwitcher />
+              
+              <SocialShare 
+                url={window.location.href}
+                title={`${profile.name}'s Birthday Wishes`}
+                description={profile.message}
+              />
+              
               <Link to="/create">
                 <Button className="bg-gradient-to-r from-pink-500 to-purple-500">
-                  Create Your Own
+                  {t('nav.createYourOwn')}
                 </Button>
               </Link>
             </div>
+            
+            {/* Mobile Navigation */}
+            <div className="md:hidden flex items-center space-x-2">
+              <Avatar className="w-8 h-8">
+                <AvatarImage src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7" alt="Profile" />
+                <AvatarFallback>
+                  <User className="w-4 h-4" />
+                </AvatarFallback>
+              </Avatar>
+              <MobileNav />
+            </div>
           </nav>
         </header>
-
-        {showShareMessage && (
-          <div className="fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg z-50">
-            Link copied to clipboard! 📋
-          </div>
-        )}
 
         <div className="container mx-auto px-4 py-8">
           {/* Profile Header */}
