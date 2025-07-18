@@ -19,7 +19,7 @@ export const Footer = () => {
           </SocialLink>
         ))}
       </div>
-      <p>&copy; 2024 WizzyList. {t("footer.tagline")}</p>
+      <p>&copy; 2025 WizzyList. {t("footer.tagline")}</p>
     </footer>
   );
 };
