@@ -1,7 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
 import { Link, useLocation } from "react-router-dom";
-import { Logo } from "../ui/extra";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { User } from "lucide-react";
+import { MobileNav } from "@/components";
+import logoImage from "@/assets/images/wizzylist.png";
+import { NavLink } from "react-router-dom";
 
 export const Header = () => {
   const { t, i18n } = useTranslation();
@@ -17,64 +21,57 @@ export const Header = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <header
-      className={`w-full bg-white shadow-sm border-b ${
-        dir === "rtl" ? "font-vazir" : "font-inter"
-      }`}
-    >
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-8 rtl:space-x-reverse">
-            <Logo />
-            <nav className="hidden md:flex space-x-6 rtl:space-x-reverse">
-              <Link
-                to="/"
-                className={`transition-colors ${
-                  isActive("/")
-                    ? "text-primary font-medium"
-                    : "text-gray-600 hover:text-primary"
-                }`}
-              >
-                {t("nav.search")}
-              </Link>
-              <Link
-                to="/dashboard"
-                className={`transition-colors ${
-                  isActive("/dashboard")
-                    ? "text-primary font-medium"
-                    : "text-gray-600 hover:text-primary"
-                }`}
-              >
-                {t("nav.dashboard")}
-              </Link>
-              <Link
-                to="/about"
-                className={`transition-colors ${
-                  isActive("/about")
-                    ? "text-primary font-medium"
-                    : "text-gray-600 hover:text-primary"
-                }`}
-              >
-                {t("nav.about")}
-              </Link>
-            </nav>
-          </div>
+    <header className="container mx-auto px-4 py-6">
+      <nav className="flex items-center justify-between">
+        <div className="flex items-center space-x-2">
+          <NavLink to="/">
+            <img src={logoImage} alt="Logo" className="h-12" />
+          </NavLink>
+        </div>
 
-          <div className="flex items-center space-x-4 rtl:space-x-reverse">
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center space-x-4">
+          <Avatar className="w-8 h-8">
+            <AvatarImage
+              src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7"
+              alt="Profile"
+            />
+            <AvatarFallback>
+              <User className="w-4 h-4" />
+            </AvatarFallback>
+          </Avatar>
+
+          {/* <LanguageSwitcher /> */}
+
+          <Link to="/create">
             <Button
               variant="outline"
-              size="sm"
-              onClick={toggleLanguage}
-              className="text-sm"
+              className="border-pink-200 text-pink-600 hover:bg-pink-50"
             >
-              {i18n.language === "en" ? "فارسی" : "English"}
+              {t("nav.createList")}
             </Button>
-            <Button className="bg-warning text-warning-foreground hover:bg-warning/90">
-              {t("hero.help")}
+          </Link>
+          <Link to="/browse">
+            <Button className="bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600">
+              {t("nav.browseLists")}
             </Button>
-          </div>
+          </Link>
         </div>
-      </div>
+
+        {/* Mobile Navigation */}
+        <div className="md:hidden flex items-center space-x-2">
+          <Avatar className="w-8 h-8">
+            <AvatarImage
+              src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7"
+              alt="Profile"
+            />
+            <AvatarFallback>
+              <User className="w-4 h-4" />
+            </AvatarFallback>
+          </Avatar>
+          <MobileNav />
+        </div>
+      </nav>
     </header>
   );
 };

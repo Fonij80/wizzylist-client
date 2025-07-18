@@ -10,81 +10,15 @@ import {
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Gift, Heart, Users, Sparkles, Cake, Circle, User } from "lucide-react";
 import { MobileNav, LanguageSwitcher, SocialShare } from "@/components";
-import { useLanguage } from "@/contexts/LanguageContext";
 import logoImage from "@/assets/images/wizzylist.png";
 import { NavLink } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export const Landing = () => {
-  const { t } = useLanguage();
+  const { t } = useTranslation();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50">
-      {/* Header */}
-      <header className="container mx-auto px-4 py-6">
-        <nav className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            {/* <div className="w-10 h-10 bg-gradient-to-br from-pink-400 to-purple-500 rounded-full flex items-center justify-center">
-              <Gift className="w-6 h-6 text-white" />
-            </div>
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">
-              WizzyList
-            </h1> */}
-            <NavLink to="/">
-              <img src={logoImage} alt="Logo" className="h-12" />
-            </NavLink>
-          </div>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-4">
-            <Avatar className="w-8 h-8">
-              <AvatarImage
-                src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7"
-                alt="Profile"
-              />
-              <AvatarFallback>
-                <User className="w-4 h-4" />
-              </AvatarFallback>
-            </Avatar>
-
-            <LanguageSwitcher />
-
-            <SocialShare
-              url={window.location.href}
-              title="WizzyList - Make Every Birthday Magical!"
-              description="Create beautiful birthday wish lists and share them with loved ones"
-            />
-
-            <Link to="/create">
-              <Button
-                variant="outline"
-                className="border-pink-200 text-pink-600 hover:bg-pink-50"
-              >
-                {t("nav.createList")}
-              </Button>
-            </Link>
-            <Link to="/browse">
-              <Button className="bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600">
-                {t("nav.browseLists")}
-              </Button>
-            </Link>
-          </div>
-
-          {/* Mobile Navigation */}
-          <div className="md:hidden flex items-center space-x-2">
-            <Avatar className="w-8 h-8">
-              <AvatarImage
-                src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7"
-                alt="Profile"
-              />
-              <AvatarFallback>
-                <User className="w-4 h-4" />
-              </AvatarFallback>
-            </Avatar>
-            <MobileNav />
-          </div>
-        </nav>
-      </header>
-
+    <div className="min-h-screen">
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-16 text-center">
         <div className="max-w-4xl mx-auto">
@@ -204,17 +138,6 @@ export const Landing = () => {
           </Link>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="container mx-auto px-4 py-8 text-center text-gray-600">
-        <div className="flex items-center justify-center space-x-2 mb-4">
-          <div className="w-6 h-6 bg-gradient-to-br from-pink-400 to-purple-500 rounded-full flex items-center justify-center">
-            <Gift className="w-4 h-4 text-white" />
-          </div>
-          <span className="font-semibold">WizzyList</span>
-        </div>
-        <p>&copy; 2024 WizzyList. {t("footer.tagline")}</p>
-      </footer>
     </div>
   );
 };

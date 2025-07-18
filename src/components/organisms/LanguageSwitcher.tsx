@@ -1,13 +1,14 @@
-
-import { useLanguage } from '@/contexts/LanguageContext';
-import { Button } from '@/components/ui/button';
-import { Languages } from 'lucide-react';
+import { Button } from "@/components/ui/button";
+import { Languages } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export const LanguageSwitcher = () => {
-  const { language, setLanguage } = useLanguage();
+  const { i18n } = useTranslation();
 
   const toggleLanguage = () => {
-    setLanguage(language === 'en' ? 'fa' : 'en');
+    const newLanguage = i18n.language === "en" ? "fa" : "en";
+    i18n.changeLanguage(newLanguage);
+    document.documentElement.dir = newLanguage === "fa" ? "rtl" : "ltr";
   };
 
   return (
@@ -15,10 +16,9 @@ export const LanguageSwitcher = () => {
       variant="outline"
       size="sm"
       onClick={toggleLanguage}
-      className="border-pink-200 text-pink-600 hover:bg-pink-50"
+      className="text-sm"
     >
-      <Languages className="w-4 h-4 mr-2" />
-      {language === 'en' ? 'فا' : 'EN'}
+      {i18n.language === "en" ? "فارسی" : "English"}
     </Button>
   );
 };

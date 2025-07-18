@@ -9,7 +9,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Gift, ExternalLink, Check, Plus } from "lucide-react";
 import { WishListForm } from "./WishListForm";
-import { SocialShare } from "./organisms/SocialShare";
+import { SocialShare } from "./SocialShare";
 
 interface WishItem {
   id: string;

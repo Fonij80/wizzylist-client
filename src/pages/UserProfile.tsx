@@ -19,14 +19,13 @@ import {
   ArrowLeft,
   User,
 } from "lucide-react";
-import { WishListDisplay } from "@/components/WishListDisplay";
+import { WishListDisplay, MobileNav } from "@/components";
 import { BirthdayCountdown } from "@/components/organisms/BirthdayCountdown";
 import { BirthdayMessages } from "@/components/organisms/BirthdayMessages";
 import { ThemeProvider } from "@/components/organisms/ThemeProvider";
-import { MobileNav } from "@/components/MobileNav";
 import { LanguageSwitcher } from "@/components/organisms/LanguageSwitcher";
 import { SocialShare } from "@/components/organisms/SocialShare";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useTranslation } from "react-i18next";
 
 interface ProfileData {
   name: string;
@@ -39,7 +38,7 @@ interface ProfileData {
 export const UserProfile = () => {
   const { profileId } = useParams();
   const [profile, setProfile] = useState<ProfileData | null>(null);
-  const { t } = useLanguage();
+  const { t } = useTranslation();
 
   useEffect(() => {
     // Load profile data from localStorage (in a real app, this would be from a database)
@@ -51,7 +50,7 @@ export const UserProfile = () => {
 
   if (!profile) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50 flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <Card className="p-8 text-center">
           <CardContent>
             <Gift className="w-16 h-16 text-gray-400 mx-auto mb-4" />
@@ -75,61 +74,6 @@ export const UserProfile = () => {
   return (
     <ThemeProvider theme={profile.theme}>
       <div className="min-h-screen theme-bg">
-        {/* Header */}
-        <header className="container mx-auto px-4 py-6">
-          <nav className="flex items-center justify-between">
-            <Link to="/" className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gradient-to-br from-pink-400 to-purple-500 rounded-full flex items-center justify-center">
-                <Gift className="w-6 h-6 text-white" />
-              </div>
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">
-                WizzyList
-              </h1>
-            </Link>
-
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-2">
-              <Avatar className="w-8 h-8">
-                <AvatarImage
-                  src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7"
-                  alt="Profile"
-                />
-                <AvatarFallback>
-                  <User className="w-4 h-4" />
-                </AvatarFallback>
-              </Avatar>
-
-              <LanguageSwitcher />
-
-              <SocialShare
-                url={window.location.href}
-                title={`${profile.name}'s Birthday Wishes`}
-                description={profile.message}
-              />
-
-              <Link to="/create">
-                <Button className="bg-gradient-to-r from-pink-500 to-purple-500">
-                  {t("nav.createYourOwn")}
-                </Button>
-              </Link>
-            </div>
-
-            {/* Mobile Navigation */}
-            <div className="md:hidden flex items-center space-x-2">
-              <Avatar className="w-8 h-8">
-                <AvatarImage
-                  src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7"
-                  alt="Profile"
-                />
-                <AvatarFallback>
-                  <User className="w-4 h-4" />
-                </AvatarFallback>
-              </Avatar>
-              <MobileNav />
-            </div>
-          </nav>
-        </header>
-
         <div className="container mx-auto px-4 py-8">
           {/* Profile Header */}
           <div className="max-w-4xl mx-auto">

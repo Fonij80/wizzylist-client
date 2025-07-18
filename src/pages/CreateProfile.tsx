@@ -34,30 +34,18 @@ export const CreateProfile = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-purple-50 to-blue-50">
-      {/* Header */}
-      <header className="container mx-auto px-4 py-6">
-        <nav className="flex items-center justify-between">
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-pink-400 to-purple-500 rounded-full flex items-center justify-center">
-              <Gift className="w-6 h-6 text-white" />
-            </div>
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">
-              WizzyList
-            </h1>
-          </Link>
-          <Link to="/">
-            <Button
-              variant="outline"
-              className="border-pink-200 text-pink-600 hover:bg-pink-50"
-            >
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Back to Home
-            </Button>
-          </Link>
-        </nav>
-      </header>
-
+    <div className="min-h-screen">
+      <div className="container mx-auto px-4 py-6">
+        <Link to="/">
+          <Button
+            variant="outline"
+            className="border-pink-200 text-pink-600 hover:bg-pink-50"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Back to Home
+          </Button>
+        </Link>
+      </div>
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-8">
