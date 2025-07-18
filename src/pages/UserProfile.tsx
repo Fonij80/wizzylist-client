@@ -1,17 +1,31 @@
-
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { Gift, Heart, Calendar, Clock, Share2, MessageCircle, ArrowLeft, User } from "lucide-react";
+import {
+  Gift,
+  Heart,
+  Calendar,
+  Clock,
+  Share2,
+  MessageCircle,
+  ArrowLeft,
+  User,
+} from "lucide-react";
 import { WishListDisplay } from "@/components/WishListDisplay";
-import { BirthdayCountdown } from "@/components/BirthdayCountdown";
-import { BirthdayMessages } from "@/components/BirthdayMessages";
-import { ThemeProvider } from "@/components/ThemeProvider";
+import { BirthdayCountdown } from "@/components/organisms/BirthdayCountdown";
+import { BirthdayMessages } from "@/components/organisms/BirthdayMessages";
+import { ThemeProvider } from "@/components/organisms/ThemeProvider";
 import { MobileNav } from "@/components/MobileNav";
-import { LanguageSwitcher } from "@/components/LanguageSwitcher";
-import { SocialShare } from "@/components/SocialShare";
+import { LanguageSwitcher } from "@/components/organisms/LanguageSwitcher";
+import { SocialShare } from "@/components/organisms/SocialShare";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 interface ProfileData {
@@ -22,7 +36,7 @@ interface ProfileData {
   theme: string;
 }
 
-const UserProfile = () => {
+export const UserProfile = () => {
   const { profileId } = useParams();
   const [profile, setProfile] = useState<ProfileData | null>(null);
   const { t } = useLanguage();
@@ -41,8 +55,12 @@ const UserProfile = () => {
         <Card className="p-8 text-center">
           <CardContent>
             <Gift className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-            <h2 className="text-2xl font-bold text-gray-700 mb-2">Profile Not Found</h2>
-            <p className="text-gray-600 mb-4">This wish list doesn't exist or has been removed.</p>
+            <h2 className="text-2xl font-bold text-gray-700 mb-2">
+              Profile Not Found
+            </h2>
+            <p className="text-gray-600 mb-4">
+              This wish list doesn't exist or has been removed.
+            </p>
             <Link to="/">
               <Button className="bg-gradient-to-r from-pink-500 to-purple-500">
                 Go Home
@@ -68,35 +86,41 @@ const UserProfile = () => {
                 WizzyList
               </h1>
             </Link>
-            
+
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-2">
               <Avatar className="w-8 h-8">
-                <AvatarImage src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7" alt="Profile" />
+                <AvatarImage
+                  src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7"
+                  alt="Profile"
+                />
                 <AvatarFallback>
                   <User className="w-4 h-4" />
                 </AvatarFallback>
               </Avatar>
-              
+
               <LanguageSwitcher />
-              
-              <SocialShare 
+
+              <SocialShare
                 url={window.location.href}
                 title={`${profile.name}'s Birthday Wishes`}
                 description={profile.message}
               />
-              
+
               <Link to="/create">
                 <Button className="bg-gradient-to-r from-pink-500 to-purple-500">
-                  {t('nav.createYourOwn')}
+                  {t("nav.createYourOwn")}
                 </Button>
               </Link>
             </div>
-            
+
             {/* Mobile Navigation */}
             <div className="md:hidden flex items-center space-x-2">
               <Avatar className="w-8 h-8">
-                <AvatarImage src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7" alt="Profile" />
+                <AvatarImage
+                  src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7"
+                  alt="Profile"
+                />
                 <AvatarFallback>
                   <User className="w-4 h-4" />
                 </AvatarFallback>
@@ -125,22 +149,27 @@ const UserProfile = () => {
                       </div>
                     )}
                   </div>
-                  
+
                   <div className="flex-1 text-center md:text-left">
                     <h1 className="text-4xl font-bold theme-text mb-2">
                       {profile.name}'s Birthday Wishes ✨
                     </h1>
                     {profile.message && (
-                      <p className="text-lg theme-text-muted mb-4">"{profile.message}"</p>
+                      <p className="text-lg theme-text-muted mb-4">
+                        "{profile.message}"
+                      </p>
                     )}
                     <div className="flex items-center justify-center md:justify-start space-x-4 text-sm theme-text-muted">
                       <div className="flex items-center">
                         <Calendar className="w-4 h-4 mr-1" />
-                        {new Date(profile.birthday).toLocaleDateString('en-US', { 
-                          month: 'long', 
-                          day: 'numeric',
-                          year: 'numeric'
-                        })}
+                        {new Date(profile.birthday).toLocaleDateString(
+                          "en-US",
+                          {
+                            month: "long",
+                            day: "numeric",
+                            year: "numeric",
+                          }
+                        )}
                       </div>
                     </div>
                   </div>
@@ -162,5 +191,3 @@ const UserProfile = () => {
     </ThemeProvider>
   );
 };
-
-export default UserProfile;

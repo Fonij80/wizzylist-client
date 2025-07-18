@@ -1,11 +1,10 @@
-
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Menu, X, Gift } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { LanguageSwitcher } from './LanguageSwitcher';
-import { useLanguage } from '@/contexts/LanguageContext';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { Menu, X, Gift } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { LanguageSwitcher } from "./organisms/LanguageSwitcher";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export const MobileNav = () => {
   const [open, setOpen] = useState(false);
@@ -28,19 +27,22 @@ export const MobileNav = () => {
               WizzyList
             </h2>
           </div>
-          
+
           <Link to="/create" onClick={() => setOpen(false)}>
-            <Button variant="outline" className="w-full border-pink-200 text-pink-600 hover:bg-pink-50">
-              {t('nav.createList')}
+            <Button
+              variant="outline"
+              className="w-full border-pink-200 text-pink-600 hover:bg-pink-50"
+            >
+              {t("nav.createList")}
             </Button>
           </Link>
-          
+
           <Link to="/browse" onClick={() => setOpen(false)}>
             <Button className="w-full bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600">
-              {t('nav.browseLists')}
+              {t("nav.browseLists")}
             </Button>
           </Link>
-          
+
           <div className="pt-4 border-t">
             <LanguageSwitcher />
           </div>

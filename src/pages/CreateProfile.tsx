@@ -1,22 +1,27 @@
-
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Gift, ArrowLeft, Calendar, Camera, Palette } from "lucide-react";
-import { WishListForm } from "@/components/WishListForm";
-import { ThemeSelector } from "@/components/ThemeSelector";
+import { WishListForm } from "@/components/organisms/WishListForm";
+import { ThemeSelector } from "@/components/organisms/ThemeSelector";
 
-const CreateProfile = () => {
+export const CreateProfile = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     birthday: "",
     message: "",
     photo: "",
-    theme: "colorful"
+    theme: "colorful",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -42,7 +47,10 @@ const CreateProfile = () => {
             </h1>
           </Link>
           <Link to="/">
-            <Button variant="outline" className="border-pink-200 text-pink-600 hover:bg-pink-50">
+            <Button
+              variant="outline"
+              className="border-pink-200 text-pink-600 hover:bg-pink-50"
+            >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Home
             </Button>
@@ -57,7 +65,8 @@ const CreateProfile = () => {
               Create Your Birthday Profile ✨
             </h2>
             <p className="text-gray-600">
-              Let's make your birthday unforgettable! Fill in your details to create a magical wish list.
+              Let's make your birthday unforgettable! Fill in your details to
+              create a magical wish list.
             </p>
           </div>
 
@@ -79,7 +88,9 @@ const CreateProfile = () => {
                     id="name"
                     placeholder="Enter your name"
                     value={formData.name}
-                    onChange={(e) => setFormData({...formData, name: e.target.value})}
+                    onChange={(e) =>
+                      setFormData({ ...formData, name: e.target.value })
+                    }
                     required
                   />
                 </div>
@@ -90,7 +101,9 @@ const CreateProfile = () => {
                     id="birthday"
                     type="date"
                     value={formData.birthday}
-                    onChange={(e) => setFormData({...formData, birthday: e.target.value})}
+                    onChange={(e) =>
+                      setFormData({ ...formData, birthday: e.target.value })
+                    }
                     required
                   />
                 </div>
@@ -101,7 +114,9 @@ const CreateProfile = () => {
                     id="photo"
                     placeholder="https://example.com/your-photo.jpg"
                     value={formData.photo}
-                    onChange={(e) => setFormData({...formData, photo: e.target.value})}
+                    onChange={(e) =>
+                      setFormData({ ...formData, photo: e.target.value })
+                    }
                   />
                 </div>
 
@@ -111,7 +126,9 @@ const CreateProfile = () => {
                     id="message"
                     placeholder="What makes this birthday special to you?"
                     value={formData.message}
-                    onChange={(e) => setFormData({...formData, message: e.target.value})}
+                    onChange={(e) =>
+                      setFormData({ ...formData, message: e.target.value })
+                    }
                   />
                 </div>
               </CardContent>
@@ -130,7 +147,7 @@ const CreateProfile = () => {
               <CardContent>
                 <ThemeSelector
                   selectedTheme={formData.theme}
-                  onThemeChange={(theme) => setFormData({...formData, theme})}
+                  onThemeChange={(theme) => setFormData({ ...formData, theme })}
                 />
               </CardContent>
             </Card>
@@ -151,5 +168,3 @@ const CreateProfile = () => {
     </div>
   );
 };
-
-export default CreateProfile;
