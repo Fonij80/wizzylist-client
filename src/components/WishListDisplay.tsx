@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Gift, ExternalLink, Check, Plus } from "lucide-react";
 import { WishListForm } from "./WishListForm";
+import { SocialShare } from "./SocialShare";
 
 interface WishItem {
   id: string;
@@ -22,12 +23,20 @@ export const WishListDisplay = ({ profileId }: WishListDisplayProps) => {
   const [wishList, setWishList] = useState<WishItem[]>([]);
   const [showAddForm, setShowAddForm] = useState(false);
   const [isOwner, setIsOwner] = useState(false);
+  const [profileName, setProfileName] = useState('');
 
   useEffect(() => {
     // Load wish list from localStorage
     const savedWishList = localStorage.getItem(`wishlist_${profileId}`);
     if (savedWishList) {
       setWishList(JSON.parse(savedWishList));
+    }
+    
+    // Load profile name for sharing
+    const savedProfile = localStorage.getItem(`profile_${profileId}`);
+    if (savedProfile) {
+      const profile = JSON.parse(savedProfile);
+      setProfileName(profile.name);
     }
     
     // Check if current user is the owner (simplified check)
@@ -62,15 +71,23 @@ export const WishListDisplay = ({ profileId }: WishListDisplayProps) => {
           <Gift className="w-8 h-8 mr-3 text-purple-500" />
           Birthday Wish List
         </h2>
-        {isOwner && (
-          <Button
-            onClick={() => setShowAddForm(true)}
-            className="bg-gradient-to-r from-pink-500 to-purple-500"
-          >
-            <Plus className="w-4 h-4 mr-2" />
-            Add Item
-          </Button>
-        )}
+        <div className="flex items-center space-x-2">
+          <SocialShare 
+            url={window.location.href}
+            title={`${profileName}'s Birthday Wishlist`}
+            description="Check out my birthday wishlist and help make my day special!"
+            compact={true}
+          />
+          {isOwner && (
+            <Button
+              onClick={() => setShowAddForm(true)}
+              className="bg-gradient-to-r from-pink-500 to-purple-500"
+            >
+              <Plus className="w-4 h-4 mr-2" />
+              Add Item
+            </Button>
+          )}
+        </div>
       </div>
 
       {showAddForm && (

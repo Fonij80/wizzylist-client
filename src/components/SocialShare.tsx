@@ -14,9 +14,10 @@ interface SocialShareProps {
   url: string;
   title: string;
   description?: string;
+  compact?: boolean;
 }
 
-export const SocialShare = ({ url, title, description = '' }: SocialShareProps) => {
+export const SocialShare = ({ url, title, description = '', compact = false }: SocialShareProps) => {
   const [showCopiedMessage, setShowCopiedMessage] = useState(false);
   const { t } = useLanguage();
 
@@ -51,9 +52,13 @@ export const SocialShare = ({ url, title, description = '' }: SocialShareProps) 
       
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="outline" className="border-pink-200 text-pink-600 hover:bg-pink-50">
+          <Button 
+            variant="outline" 
+            size={compact ? "sm" : "default"}
+            className="border-pink-200 text-pink-600 hover:bg-pink-50"
+          >
             <Share2 className="w-4 h-4 mr-2" />
-            {t('nav.share')}
+            {!compact && t('nav.share')}
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-56 bg-white border shadow-lg">
