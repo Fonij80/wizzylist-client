@@ -6,7 +6,7 @@ export const Footer = () => {
   const { t } = useTranslation();
 
   return (
-    <footer className="container mx-auto px-4 py-8 text-center text-gray-600">
+    <footer className="container mx-auto px-4 pb-8 text-center text-gray-600">
       <div className="flex gap-4 justify-center mb-4">
         {socialLinks_list.map(({ href, label, icon: Icon, className }) => (
           <SocialLink

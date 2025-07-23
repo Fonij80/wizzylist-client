@@ -41,7 +41,8 @@
       "copyright": "© 2025 Universa. All rights reserved."
     },
     "not_found": {
-      "back": "Return to Home"
+      "message": "This wishlist doesn’t exist... yet!",
+      "back": "Start your own"
     }
   },
   "fa": {
@@ -86,7 +87,8 @@
       "copyright": "© ۲۰۲۵ یونیورسا. کلیه حقوق محفوظ است"
     },
     "not_found": {
-      "back": "بازگشت به خانه"
+      "message": "این لیست آرزوها هنوز ساخته نشده!",
+      "back": "ساختن این لیست"
     }
   }
 }
