@@ -1,4 +1,4 @@
-import { Landing, Browse, CreateProfile, UserProfile } from "@/pages";
+import { Landing, Browse, CreateProfile, UserProfile, Privacy } from "@/pages";
 
 export const appRoutes = [
   { path: "/", element: <Landing />, labelKey: "landing" },
@@ -9,4 +9,5 @@ export const appRoutes = [
     element: <UserProfile />,
     labelKey: "user profile",
   },
+  { path: "/privacy", element: <Privacy />, labelKey: "privacy" },
 ];
