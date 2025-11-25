@@ -37,11 +37,11 @@ export const MobileNav = () => {
             </Button>
           </Link>
 
-          <Link to="/browse" onClick={() => setOpen(false)}>
+          {/* <Link to="/browse" onClick={() => setOpen(false)}>
             <Button className="w-full bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600">
               {t("nav.browseLists")}
             </Button>
-          </Link>
+          </Link> */}
 
           {/* <div className="pt-4 border-t">
             <LanguageSwitcher />

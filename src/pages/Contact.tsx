@@ -1,6 +1,9 @@
+import { BackBtn } from "@/components/ui/extra";
+
 export const Contact = () => {
   return (
     <div className="max-w-4xl mx-auto px-4 py-12 text-gray-800">
+      <BackBtn />
       <h1 className="text-3xl font-bold mb-2 text-center">Contact Us</h1>
       <p className="text-center text-gray-500 mb-10">
         Have a question, feedback, or just want to say hi? We'd love to hear

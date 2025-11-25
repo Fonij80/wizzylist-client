@@ -5,6 +5,8 @@
     "nav.createYourOwn": "Create Your Own",
     "nav.share": "Share",
 
+    "back_btn": "Back to Home",
+
     "hero.title": "Make Every Birthday Magical! ✨",
     "hero.description": "Create beautiful birthday wish lists, share them with loved ones, and make gift-giving a delightful experience for everyone.",
     "hero.createButton": "Create Your Wishlist",
@@ -22,7 +24,7 @@
     "cta.subtitle": "Join thousands of people making birthdays more special with WizzyList",
     "cta.button": "Create My Wishlist",
 
-    "footer.tagline": "Wishes made easy.",
+    "footer.tagline": "All rights reserved.",
 
     "share.copied": "Link copied!",
     "share.facebook": "Facebook",
@@ -50,6 +52,8 @@
     "nav.browseLists": "مرور لیست‌ها",
     "nav.createYourOwn": "خودتان بسازید",
     "nav.share": "اشتراک",
+
+    "back_btn": "بازگشت به خانه",
 
     "hero.title": "هر تولدی را جادویی کنید! ✨",
     "hero.description": "لیست‌های زیبای آرزوهای تولد بسازید، با عزیزانتان به اشتراک بگذارید و هدیه دادن را تجربه‌ای لذت‌بخش برای همه کنید.",

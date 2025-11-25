@@ -1,13 +1,11 @@
 import { useTranslation } from "react-i18next";
-import { SocialLink } from "../ui/extra";
-import { socialLinks_list } from "../../constants/socialLinks";
 import { Link } from "react-router-dom";
 
 export const Footer = () => {
   const { t } = useTranslation();
 
   return (
-    <footer className="container mx-auto px-4 pb-8 text-center text-gray-600">
+    <footer className="container mx-auto px-4 py-8 text-center text-gray-600">
       <div className="flex flex-wrap justify-center gap-6 mb-2 text-md text-gray-500">
         <Link to="/about" className="hover:underline">
           {t("footer.about", "About")}

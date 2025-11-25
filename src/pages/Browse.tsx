@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { SocialShare } from "@/components/organisms/SocialShare";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -8,11 +7,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { ArrowLeft } from "lucide-react";
-import { MobileNav } from "@/components";
-import { LanguageSwitcher } from "@/components/organisms/LanguageSwitcher";
-import { SocialShare } from "@/components/organisms/SocialShare";
+import { BackBtn } from "@/components/ui/extra";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 interface WishListTemplate {
@@ -178,17 +174,8 @@ export const Browse = () => {
 
   return (
     <div className="min-h-screen">
-      <div className="container mx-auto px-4 py-6">
-        <Link to="/">
-          <Button
-            variant="outline"
-            className="border-pink-200 text-pink-600 hover:bg-pink-50"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Home
-          </Button>
-        </Link>
-      </div>
+      <BackBtn />
+
       <div className="container mx-auto px-4 py-8">
         {/* Page Header */}
         <div className="text-center mb-12">

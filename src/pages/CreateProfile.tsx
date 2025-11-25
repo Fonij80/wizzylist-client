@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { ThemeSelector } from "@/components/organisms/ThemeSelector";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -8,13 +7,16 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { BackBtn } from "@/components/ui/extra";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Gift, ArrowLeft, Calendar, Camera, Palette } from "lucide-react";
-import { WishListForm } from "@/components/organisms/WishListForm";
-import { ThemeSelector } from "@/components/organisms/ThemeSelector";
+import { Camera, Gift, Palette } from "lucide-react";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 export const CreateProfile = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
@@ -35,17 +37,8 @@ export const CreateProfile = () => {
 
   return (
     <div className="min-h-screen">
-      <div className="container mx-auto px-4 py-6">
-        <Link to="/">
-          <Button
-            variant="outline"
-            className="border-pink-200 text-pink-600 hover:bg-pink-50"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Home
-          </Button>
-        </Link>
-      </div>
+      <BackBtn />
+
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-8">
@@ -84,7 +77,7 @@ export const CreateProfile = () => {
                 </div>
 
                 <div>
-                  <Label htmlFor="birthday">Birthday Date</Label>
+                  <Label htmlFor="birthday">Special Date</Label>
                   <Input
                     id="birthday"
                     type="date"

@@ -5,6 +5,7 @@ import {
   UserProfile,
   Privacy,
   Contact,
+  About,
 } from "@/pages";
 
 export const appRoutes = [
@@ -18,4 +19,5 @@ export const appRoutes = [
   },
   { path: "/privacy", element: <Privacy />, labelKey: "privacy" },
   { path: "/contact", element: <Contact />, labelKey: "contact" },
+  { path: "/about", element: <About />, labelKey: "about" },
 ];

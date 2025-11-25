@@ -51,11 +51,11 @@ export const Header = () => {
               {t("nav.createList")}
             </Button>
           </Link>
-          <Link to="/browse">
+          {/* <Link to="/browse">
             <Button className="bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600">
               {t("nav.browseLists")}
             </Button>
-          </Link>
+          </Link> */}
         </div>
 
         {/* Mobile Navigation */}
